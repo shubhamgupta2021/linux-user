@@ -18,11 +18,11 @@ def form():
     if validate_request==200:
         user = UserHandler(request.form['username'])
         if request.form['action'] == 'create':
-            user.add(password=request.form['password'], shell=request.form['shell'], home_dir= request.form['directory'])
+            user.add(request.form)
         if request.form['action'] == 'delete':
             user.delete()
         if request.form['action'] == 'modify':
-            user.modify(password=request.form['password'], shell=request.form['shell'], home_dir= request.form['directory'])
+            user.modify(request.form)
 
         return render_template("success.html")
     else:
@@ -34,5 +34,5 @@ if __name__ == "__main__":
         app.debug = True
         app.run(host='0.0.0.0', port=5000)
     else:
-
+        print "User permission denied."
         sys.exit(1)

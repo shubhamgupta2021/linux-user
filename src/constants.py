@@ -17,3 +17,6 @@ SHELL_DICT = {
     "fish" : '/usr/bin/fish',
     "csh"  : '/bin/csh'
 }
+REMOVE_GROUP_BASE = "gpasswd -d "
+REMOVE_GROUP_NAME = " sudo"
+
