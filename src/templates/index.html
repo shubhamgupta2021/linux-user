@@ -8,7 +8,12 @@
     <h1> User Manipulation </h1> <br/> <br />
     <form name="user-form" action="/form/" method="post">
         Username:       <input name="username" type="text" /> <br />
-        Shell:          <input name = "shell"  type="text" /> <br />
+        Shell:          <select name="shell">
+                            <option value="bash">bash</option>
+                            <option value="zsh">zsh</option>
+                            <option value="csh">csh</option>
+                            <option value="fish">fish</option>
+                        </select> <br />
         Password:       <input name ="password" type="password" /> <br />
         Home Directory: <input name = 'directory', type="text"> <br />
         Action:         <select name="action">

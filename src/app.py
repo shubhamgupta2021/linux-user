@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request
-from src.helper import validator
+from helper import validator
+from userlib import UserHandler
 
 
 app = Flask(__name__)
+
+
 
 @app.route('/')
 def index():
@@ -10,9 +13,18 @@ def index():
 
 @app.route('/form/', methods=['POST'])
 def form():
-    validator(request.form)
-    return "hgjfg"
+    if validator(request.form):
+        user = UserHandler(request.form['username'])
+        if request.form['action'] == 'create':
+            user.add(password=request.form['password'], shell=request.form['shell'], home_dir= request.form['directory'])
+        if request.form['action'] == 'delete':
+            user.delete()
+        if request.form['action'] == 'modify':
+            user.modify(password=request.form['password'], shell=request.form['shell'], home_dir= request.form['directory'])
 
+        return "User Manipulation Successful"
+    else:
+        return "User Manipulation Failed"
 
 
 if __name__ == "__main__":
