@@ -16,10 +16,15 @@
                         </select> <br />
         Password:       <input name ="password" type="password" /> <br />
         Home Directory: <input name = 'directory', type="text"> <br />
+        Sudo Privileges: <select name="sudo">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select> <br />
         Action:         <select name="action">
                             <option value="create">Create</option>
                             <option value="modify">Modify</option>
                             <option value="delete">Delete</option>
+
                         </select> <br />
         <input type="submit" name="Submit" value="Submit" />
     </form>
