@@ -8,15 +8,20 @@
 <h2>User Manipulation Failed.</h2>
 <br />
 <br />
-{%if error_code==400 %}
+
+{%if context.error_code==400 %}
     Please give a username.
-{% elif error_code==412  %}
-    {% if action== "modify" or action == "delete" %}
-    User does not exist. Please give a proper username.
+{% elif context.error_code==412  %}
+    {% if context.action== "modify" or context.action == "delete" %}
+    User does not exist. Please give a proper username to {{context.action}}.
     {% else %}
-    User already exist. Please give a proper username.
+    User already exist. Please give a proper username to {{context.action}}.
     {% endif %}
 {% endif%}
+{% if context.error_message %}
+    {{context.error_message}}
+{% endif %}
+<br />
 
 Click <a href="/">here</a> to re-execute query.
 </body>

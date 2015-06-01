@@ -17,14 +17,18 @@ def form():
     validate_request = validator(request.form)
     if validate_request==200:
         user = UserHandler(request.form['username'])
-        if request.form['action'] == 'create':
-            user.add(request.form)
-        if request.form['action'] == 'delete':
-            user.delete()
-        if request.form['action'] == 'modify':
-            user.modify(request.form)
+        try:
+            if request.form['action'] == 'create':
+                user.add(request.form)
+            if request.form['action'] == 'delete':
+                user.delete()
+            if request.form['action'] == 'modify':
+                user.modify(request.form)
 
-        return render_template("success.html")
+            return render_template("success.html")
+        except Exception as err:
+            message = "unable to process query."
+            return render_template("error.html", context = {"error_message":message })
     else:
         return render_template("error.html", context= {"error_code": validate_request, "action": request.form.get('action')})
 
@@ -34,5 +38,5 @@ if __name__ == "__main__":
         app.debug = True
         app.run(host='0.0.0.0', port=5000)
     else:
-        print "User permission denied."
+        print "User permission denied. Run through admin user."
         sys.exit(1)

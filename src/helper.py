@@ -17,7 +17,12 @@ def validator(request_form):
             return 200
 
 def validate_admin():
-    current_uid  = int(os.environ.get('SUDO_UID'))
+    try:
+        current_uid  = int(os.environ.get('SUDO_UID'))
+    except TypeError as err:
+        print "You need root access."
+        return 0
+
     if pwd.getpwuid(current_uid)[0] == ADMIN:
         return 1
     else:

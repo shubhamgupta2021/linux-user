@@ -18,5 +18,5 @@ SHELL_DICT = {
     "csh"  : '/bin/csh'
 }
 REMOVE_GROUP_BASE = "gpasswd -d "
-REMOVE_GROUP_NAME = " sudo"
+REMOVE_GROUP_NAME = "sudo"
 

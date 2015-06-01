@@ -8,6 +8,6 @@ try:
 except subprocess.CalledProcessError as err:
     print err.returncode
 
- from src.userlib import UserHandler
+from src.userlib import UserHandler
 user = UserHandler("shubham")
 user.change_password("alpha123")
