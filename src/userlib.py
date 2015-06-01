@@ -44,7 +44,7 @@ class UserHandler(object):
         if request_form.get('password'):
             command += constants.PASSWORD + request_form['password'] +" "
         if request_form['sudo']=="yes":
-            command += constants.SUDO
+            command += constants.SUDO + " "
         else:
             remove_from_group = constants.REMOVE_GROUP_BASE+ self.username+ constants.REMOVE_GROUP_NAME
             command_args = shlex.split(remove_from_group)
