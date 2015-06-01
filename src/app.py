@@ -24,10 +24,9 @@ def form():
                 user.delete()
             if request.form['action'] == 'modify':
                 user.modify(request.form)
-
             return render_template("success.html")
         except Exception as err:
-            message = "unable to process query."
+            message = "Unable to process query. Please logout from user."
             return render_template("error.html", context = {"error_message":message })
     else:
         return render_template("error.html", context= {"error_code": validate_request, "action": request.form.get('action')})

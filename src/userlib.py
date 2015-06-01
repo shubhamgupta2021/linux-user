@@ -46,11 +46,11 @@ class UserHandler(object):
             command += constants.HOME_DIR+ request_form['directory'] + " "
         if request_form['sudo']=="yes":
             command += constants.SUDO + " "
-        else:
-            self.remove_from_group()
         command += request_form['username']
         command_args = shlex.split(command)
-        subprocess.Popen(command_args)
+        subprocess.check_call(command_args)
+        if request_form['sudo'] == 'no':
+            self.remove_from_group()
 
         if request_form.get('password'):
             self.change_password(request_form['password'])
