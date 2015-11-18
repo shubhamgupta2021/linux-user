@@ -10,4 +10,4 @@ except subprocess.CalledProcessError as err:
 
 from src.userlib import UserHandler
 user = UserHandler("shubham")
-user.change_password("alpha123")
+user.change_password("xxxxxx")
